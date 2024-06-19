@@ -15,7 +15,6 @@ const WeatherApp = () => {
 
   const fetchWeatherByGeolocation = async () => {
     try {
-      // Get user's current position using Geolocation API
       navigator.geolocation.getCurrentPosition(async (position) => {
         const { latitude, longitude } = position.coords;
         const response = await axios.get(
@@ -59,7 +58,9 @@ const WeatherApp = () => {
         </button>
       </div>
 
-      {error && <p className="error">{error}</p>}
+      {/* {error && <p className="error">{error}</p>} */}
+      {error ? <p className="error">{error}</p> : null}
+
       {weatherData && (
         <div className="weatherContainer">
           <h2 className="subtitle">{weatherData.name}</h2>
