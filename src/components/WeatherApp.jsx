@@ -42,6 +42,12 @@ const WeatherApp = () => {
     }
   };
 
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      handleLocationSubmit();
+    }
+  };
+
   return (
     <div className="container">
       <h1 className="title">Weather App</h1>
@@ -52,13 +58,13 @@ const WeatherApp = () => {
           onChange={(e) => setCity(e.target.value)}
           placeholder="Enter city name"
           className="input"
+          onKeyPress={handleKeyPress}
         />
         <button className="button" onClick={handleLocationSubmit}>
           Search
         </button>
       </div>
 
-      {/* {error && <p className="error">{error}</p>} */}
       {error ? <p className="error">{error}</p> : null}
 
       {weatherData && (
